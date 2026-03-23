@@ -1,11 +1,29 @@
-import React, { useState, useCallback } from 'react';
-import WalletConnect from './components/WalletConnect';
+import React, { useState, useCallback, useEffect} from 'react';
+import WalletConnect from './components/WalletConnect.js';
+import { supabase } from './supabaseClient.js';
+
 import './App.css';
 
 function App() {
   const [walletInfo, setWalletInfo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+  useEffect(() => {
+    const checkConnection = async () => {
+      try {
+        const { data, error } = await supabase.from('auctions').select('*').limit(1);
+        
+        if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
+          console.error("❌ Kết nối Supabase thất bại:", error.message);
+        } else {
+          console.log("✅ Kết nối Supabase thành công!");
+        }
+      } catch (err) {
+        console.error("❌ Lỗi hệ thống khi kết nối Supabase:", err.message);
+      }
+    };
+    checkConnection();
+  }, []);
   // Dữ liệu mẫu (Giả định lấy từ Blockchain)
   const [products, setProducts] = useState([
     {
