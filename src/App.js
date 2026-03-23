@@ -11,15 +11,16 @@ function App() {
   useEffect(() => {
     const checkConnection = async () => {
       try {
-        const { data, error } = await supabase.from('auctions').select('*').limit(1);
-        
-        if (error && error.code !== 'PGRST116' && error.code !== '42P01') {
-          console.error("❌ Kết nối Supabase thất bại:", error.message);
-        } else {
-          console.log("✅ Kết nối Supabase thành công!");
+        const { error } = await supabase.from('auctions').select('id').limit(1);
+
+        if (error) {
+          console.error('Ket noi Supabase that bai:', error.message);
+          return;
         }
+
+        console.log('Ket noi Supabase thanh cong!');
       } catch (err) {
-        console.error("❌ Lỗi hệ thống khi kết nối Supabase:", err.message);
+        console.error('Loi he thong khi ket noi Supabase:', err.message);
       }
     };
     checkConnection();
