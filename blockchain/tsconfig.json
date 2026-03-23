@@ -2,12 +2,16 @@
 {
   "compilerOptions": {
     "lib": ["es2023"],
-    "module": "node16",
+    "module": "nodenext",
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
+    "moduleResolution": "nodenext",
+    "types": ["node", "mocha"],
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
     "outDir": "dist"
-  }
+  },
+  "include": ["hardhat.config.js", "ignition/**/*.ts", "scripts/**/*.ts", "test/**/*.ts"]
 }

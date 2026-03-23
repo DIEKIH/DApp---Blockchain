@@ -9,12 +9,22 @@
 
 # Hardhat Build Artifacts
 /artifacts
+/blockchain/artifacts
 
 # Hardhat compilation (v2) support directory
 /cache
+/blockchain/cache
 
 # Typechain output
 /types
+/blockchain/types
 
 # Hardhat coverage reports
 /coverage
+/blockchain/coverage
+
+# Hardhat ignition output
+/blockchain/ignition/deployments
+
+# Blockchain dependencies
+/blockchain/node_modules
