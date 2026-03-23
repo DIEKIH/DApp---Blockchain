@@ -7,3 +7,4 @@ export default buildModule("CounterModule", (m) => {
 
   return { counter };
 });
+// hhaah
